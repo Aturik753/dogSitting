@@ -1,18 +1,19 @@
-function lookEastFoyer(){
-    console.log ("You look east in the Foyer and see a doorway which leads to the Library")
-    console.log ("Item list = Library")
-    if (searchLibrary){
-        console.log ("you are not in the Library. Would you like to enter?")
-    } else if (enterLibrary){
-        
-    }
-
+function foyerLookEast(){
+    let message = ("You look East in the Foyer and see a Doorway\n")
+    message += ("Item list = Doorway")
+    return message 
 }
 
-    //if they enter the library, I would like this to be a separate file.  
-    //then there should be call functions here to run library?
-
+function foyerEastDoorway(){
+let message = ("you search the doorway and find it leads into the Library.\n")
+ message += ("Would like to stay in the Foyer or enter the Library?\n")
+ message += ("if you would like to continue searching the Foyer, please continue\n")
+ message += ("If you would like to enter the Library, go to http://localhost:3000/Library\n")
+ return message
+}
+   
 
     module.exports = {
-        lookEastFoyer
+        foyerLookEast,
+        foyerEastDoorway
     }

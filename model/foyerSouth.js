@@ -1,12 +1,14 @@
-function lookSouthFoyer(){
-    console.log ("You look south in the Foyer and see the Frontdoor")
-    console.log ("Item list = Frontdoor")
-    if (searchFrontdoor){
-        console.log ("The Frontdoor is locked")
-    }
-
+function foyerLookSouth(){
+    let message = ("You look South in the Foyer and see the Frontdoor\n")
+    message += ("Item list = Frontdoor")
+    return message
+}
+function foyerSouthSearchFrontdoor(){
+    let message = ("The Frontdoor is locked!")
+    return message
 }
 
 module.exports = {
-    lookSouthFoyer
+    foyerLookSouth,
+    foyerSouthSearchFrontdoor
 }

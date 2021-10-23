@@ -3,15 +3,21 @@ const express = require('express')
 const router = express.Router()
 
 
-let  {newGame, 
+let {newGame, 
     instructions } = require('../model/newGameInstr')
-let {FoyerLookNorth,
-    FoyerNorthSearchStaircase,
-    FoyerNorthSearchLockedDoor,
-    FoyerNorthSearchKeyhole,
-    FoyerNorthStaircaseUseStaricaseKey,
-    FoyerNorthSearchDoor,
-    FoyerNorthSearchPowderroom} = require('../model/foyerNorth')
+let {foyerLookNorth,
+    foyerNorthSearchStaircase,
+    foyerNorthSearchLockedDoor,
+    foyerNorthSearchKeyhole,
+    foyerNorthStaircaseUseStaricaseKey,
+    foyerNorthSearchDoor,
+    foyerNorthSearchPowderroom} = require('../model/foyerNorth')
+let {foyerLookEast,
+    foyerEastDoorway} = require('../model/foyerEast') 
+let { foyerLookSouth,
+    foyerSouthSearchFrontdoor} = require('../model/foyerSouth')
+let {foyerLookWest} = require('../model/foyerWest')
+
 
 router.get('/startGame', async (req, res) => {
     let message = newGame()
@@ -27,42 +33,64 @@ router.get('/Foyer', async (req,res) => {
 })   
    
 router.get('/Foyer/lookNorth' , (req,res) => {
-    let message = FoyerLookNorth()
+    let message = foyerLookNorth()
     res.send (message)
 }) 
 
 router.get('/Foyer/searchStaircase' , (req,res) => {
-    let message = FoyerNorthSearchStaircase()
+    let message = foyerNorthSearchStaircase()
     res.send (message)
 })
 
 router.get('/Foyer/searchLockedDoor' , (req,res) => {
-    let message = FoyerNorthSearchLockedDoor()
+    let message = foyerNorthSearchLockedDoor()
     res.send (message)
 })
 
 router.get('/Foyer/searchKeyhole' , (req,res) => {
-    let message = FoyerNorthSearchKeyhole()
+    let message = foyerNorthSearchKeyhole()
     res.send (message)
 })
 
 router.get('/Foyer/useStaricaseKey' , (req,res) => {
-    let message = FoyerNorthStaircaseUseStaricaseKey()
+    let message = foyerNorthStaircaseUseStaricaseKey()
     res.send (message)
 })
 
 router.get('/Foyer/searchDoor' , (req,res) => {
-    let message = FoyerNorthSearchDoor()
+    let message = foyerNorthSearchDoor()
     res.send (message)
 })
 
 router.get('/Foyer/searchPowderroom' , (req,res) => {
-    let message = FoyerNorthSearchPowderroom()
+    let message = foyerNorthSearchPowderroom()
     res.send (message)
 })
 
+router.get('/Foyer/lookEast' , (req,res) => {
+    let message = foyerLookEast()
+    res.send (message)
+}) 
+
+router.get('/Foyer/searchDoorway' , (req,res) => {
+    let message = foyerEastDoorway()
+    res.send (message)
+})
  
-        
+router.get('/Foyer/lookSouth' , (req,res) => {
+    let message = foyerLookSouth()
+    res.send (message)
+}) 
+
+router.get('/Foyer/searchFrontdoor' , (req,res) => {
+    let message = foyerSouthSearchFrontdoor()
+    res.send (message)
+})
+
+router.get('/Foyer/lookWest' , (req,res) => {
+    let message = foyerLookWest()
+    res.send (message)
+}) 
 
 
 module.exports = router
