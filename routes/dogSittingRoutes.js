@@ -74,7 +74,20 @@ let {officeEnter,
     officelookWest,
     officeSearchSwingingDoor,
     officeEnterKitchen} = require('../model/office')
-
+let {enterBookshelfRoom,
+    searchBookshelfRoom,
+    bookshelfRoomSearchLever,
+    bookshelfRoomSearchSpiralStairs,
+    attic,
+    atticSearchNorth,
+    atticSearchEast,
+    atticSearchWest,
+    atticSearchSouth,
+    atticSearchGumballMachine,
+    atticUseCoin,
+    atticSearchSecretDoor,
+    atticEnterSoundStudio} = require('../model/attic') 
+      
 
 router.get('/startGame', async (req, res) => {
     let message = newGame()
@@ -368,7 +381,73 @@ router.get('/Office/enterKitchen' , (req,res) => {
     let message = officeEnterKitchen()
     res.send (message)
 })
-
+router.get('/BookshelfRoom' , (req,res) => {
+    let message = enterBookshelfRoom()
+    res.send (message)
+})
+router.get('/BookshelfRoom/lookNorth' , (req,res) => {
+    let message = searchBookshelfRoom()
+    res.send (message)
+})
+router.get('/BookshelfRoom/lookEast' , (req,res) => {
+    let message = searchBookshelfRoom()
+    res.send (message)
+})
+router.get('/BookshelfRoom/lookSouth' , (req,res) => {
+    let message = searchBookshelfRoom()
+    res.send (message)
+})
+router.get('/BookshelfRoom/lookWest' , (req,res) => {
+    let message = searchBookshelfRoom()
+    res.send (message)
+})
+router.get('/BookshelfRoom/searchLever' , (req,res) => {
+    let message = bookshelfRoomSearchLever()
+    res.send (message)
+})
+router.get('/BookshelfRoom/searchLever' , (req,res) => {
+    let message = bookshelfRoomSearchSpiralStairs()
+    res.send (message)
+})
+router.get('/attic/' , (req,res) => {
+    let message = attic()
+    res.send (message)
+})
+router.get('/attic/searchNorth' , (req,res) => {
+    let message = atticSearchNorth()
+    res.send (message)
+})
+router.get('/attic/searchEast' , (req,res) => {
+    let message = atticSearchEast()
+    res.send (message)
+})
+router.get('/attic/searchWest' , (req,res) => {
+    let message = atticSearchWest()
+    res.send (message)
+})
+router.get('/attic/searchSouth' , (req,res) => {
+    let message = atticSearchSouth()
+    res.send (message)
+})
+router.get('/attic/searchGumballMachine' , (req,res) => {
+    let message = atticSearchGumballMachine()
+    res.send (message)
+})
+router.get('/attic/UseCoin' , (req,res) => {
+    let message = atticUseCoin()
+    res.send (message)
+})
+router.get('/attic/searchSecretDoor' , (req,res) => {
+    let message = atticSearchSecretDoor()
+    res.send (message)
+})
+router.get('/attic/enterSoundStudio' , (req,res) => {
+    let message = atticEnterSoundStudio()
+    res.send (message)
+})
 
 module.exports = router
 
+
+ 
+   

@@ -1,7 +1,7 @@
 function libraryEnter(){
     let message = ("you enter the Library and call for the puppy but hear nothing.\n")
     return message
-    }
+}
 function libraryLookNorth(){
     let message = ("You look North in the Library.\n")
     message += ("you see three sets of Bookshelves and a Door\n")
@@ -157,7 +157,7 @@ function libraryNorthUseKeypad457218(){
     message += ("You reach out and give the bookshelf a little push and feel it move further.\n")
     message += ("You begin to push with more force and the entire bookshelf swings away from you\n")
     message += ("revealing a hidden room behind it.\n")
-    message += ("You found a new room!'BookshelfRoom'")
+    message += ("You found a new room!'BookshelfRoom'.\n")
     return message
 }
 function libraryNorthUseKeypad451872(){
