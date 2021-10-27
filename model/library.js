@@ -185,14 +185,6 @@ function libraryNorthEnterBookshelfRoom(){
     message += ("Please go to http://localhost:3000/BookshelfRoom\n")
     return message
 }
-
-
-//I would like to put a better function in here , basically if they search for any of the books on 
-//the South side, it will show up that there are no books here to search
-//ask someone tomorrow about how to do this.... then I will need to add the search results
-//from libraryNorthSearchBOOK for each one.  Dummies=keypad, others are numbers to enter on keypad.  
-//could create a fun random code generator still using the three numbers found though
-
 function libraryLookWest(){
     let message = ("You look west in the Library and see the doorway to the Foyer")
     return message

@@ -28,8 +28,6 @@ function bookshelfRoomSearchSpiralStairs(){
     message += ("Please go to http://localhost:3000/Attic to continue in this room.")
     return message
 }
-
-//above this line have already been added to routes.  need to add below this point
 function attic(){
     let message = ("You are now in the Attic.\n")
     return message
@@ -80,13 +78,13 @@ function atticEnterSoundStudio(){
     let message = ("Please go to http://localhost:3000/SoundStudio\n")
     return message
     }
-//next need to use coin to swing open the mirror to make an opening into the sound studio
+//need to build sound studio,  should it be here or a new file?  Think here is better
 
 module.exports ={
     enterBookshelfRoom,
     searchBookshelfRoom,
     bookshelfRoomSearchLever,
-    bookshelfRoomSearchSpiralStairs,//entered router on first 4 up to here.
+    bookshelfRoomSearchSpiralStairs,
     attic,
     atticSearchNorth,
     atticSearchEast,
