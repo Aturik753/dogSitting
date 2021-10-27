@@ -8,7 +8,7 @@ let  {lookWestFoyer} = require ('./foyerWest')
 
 //Change other files to start with look....and change inport/exort
 // I need to call new game and instruction functions
-
+// I think I can abandon this file and just work on the Routes file for all endpoints.
  
 
 

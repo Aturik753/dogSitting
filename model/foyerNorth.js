@@ -25,6 +25,9 @@ function foyerNorthStaircaseUseKey64(){
     message += ("If you would like to go through the staircase door, go to http://localhost:3000/Hallway")
     return message
 }
+function foyerNorthStaircaseUseKey835(){
+    let message = ("You try the key but the door remains locked.\n")
+}
 function foyerNorthSearchDoor(){
     let message = ("You have found the Powderroom\n")
     message += ("Item list = Powderroom")
@@ -56,6 +59,7 @@ module.exports = {
     foyerNorthSearchLockedDoor,
     foyerNorthSearchKeyhole,
     foyerNorthStaircaseUseKey64,
+    foyerNorthStaircaseUseKey835,
     foyerNorthSearchDoor,
     foyerNorthSearchPowderroom,
     foyerNorthSearchMirror,

@@ -10,6 +10,7 @@ let {foyerLookNorth,
     foyerNorthSearchLockedDoor,
     foyerNorthSearchKeyhole,
     foyerNorthStaircaseUseKey64,
+    foyerNorthStaircaseUseKey835,
     foyerNorthSearchDoor,
     foyerNorthSearchPowderroom,
     foyerNorthSearchMirror,
@@ -53,7 +54,26 @@ let {libraryEnter,
     libraryNorthUseKeypad184572,
     libraryNorthUseKeypad187245,
     libraryNorthEnterBookshelfRoom} = require('../model/library')
-
+let {officeEnter,
+    officeLookNorth,
+    officeSearchBookshelf,
+    officeSearchWornBook,
+    officeUseKey835,
+    officeUseKey64,
+    officeSearchPhone,
+    officeSearchPencil,
+    officeSearchPad,
+    officeUsePencil,
+    officeLookEast,
+    officeSearchComputer,
+    officeUse373,
+    officeLookSouth,
+    officeSearchFilingCabinet,
+    officeSearch373,
+    officeUseDogLifePoochFriend,
+    officelookWest,
+    officeSearchSwingingDoor,
+    officeEnterKitchen} = require('../model/office')
 
 
 router.get('/startGame', async (req, res) => {
@@ -82,6 +102,10 @@ router.get('/Foyer/searchLockedDoor' , (req,res) => {
 })
 router.get('/Foyer/searchKeyhole' , (req,res) => {
     let message = foyerNorthSearchKeyhole()
+    res.send (message)
+})
+router.get('/Foyer/useKey835' , (req,res) => {
+    let message = foyerNorthStaircaseUseKey835()
     res.send (message)
 })
 router.get('/Foyer/useKey64' , (req,res) => {
@@ -260,9 +284,91 @@ router.get('/Library/enterBookshelfRoom' , (req,res) => {
     let message = libraryNorthEnterBookshelfRoom()
     res.send (message)
 })
-
-
-
+router.get('/Office' , (req,res) => {
+    let message = officeEnter()
+    res.send (message)
+})
+router.get('/Office/lookNorth' , (req,res) => {
+    let message = officeLookNorth()
+    res.send (message)
+})
+router.get('/Office/searchBookshelf' , (req,res) => {
+    let message = officeSearchBookshelf()
+    res.send (message)
+})
+router.get('/Office/searchBookshelf' , (req,res) => {
+    let message = officeSearchWornBook()
+    res.send (message)
+})
+router.get('/Office/useKey835' , (req,res) => {
+    let message = officeUseKey835()
+    res.send (message)
+})
+router.get('/Office/useKey64' , (req,res) => {
+    let message = officeUseKey64()
+    res.send (message)
+})
+router.get('/Office/searchPhone' , (req,res) => {
+    let message = officeSearchPhone()
+    res.send (message)
+})
+router.get('/Office/searchPencil' , (req,res) => {
+    let message = officeSearchPencil()
+    res.send (message)
+})
+router.get('/Office/searchPad' , (req,res) => {
+    let message = officeSearchPad()
+    res.send (message)
+})
+router.get('/Office/usePencil' , (req,res) => {
+    let message = officeUsePencil()
+    res.send (message)
+})
+router.get('/Office/lookEast' , (req,res) => {
+    let message = officeLookEast()
+    res.send (message)
+})
+router.get('/Office/searchComputer' , (req,res) => {
+    let message = officeSearchComputer()
+    res.send (message)
+})
+router.get('/Office/use373' , (req,res) => {
+    let message = officeUse373()
+    res.send (message)
+})
+router.get('/Office/lookSouth' , (req,res) => {
+    let message = officeLookSouth()
+    res.send (message)
+})
+router.get('/Office/searchFilingCabinet' , (req,res) => {
+    let message = officeSearchFilingCabinet()
+    res.send (message)
+})
+router.get('/Office/search373' , (req,res) => {
+    let message = officeSearch373()
+    res.send (message)
+})
+router.get('/Office/searchFile373' , (req,res) => {
+    let message = officeSearch373()
+    res.send (message)
+})
+router.get('/Office/useDogLifePoochFriend' , (req,res) => {
+    let message = officeUseDogLifePoochFriend()
+    res.send (message)
+})
+router.get('/Office/lookWest' , (req,res) => {
+    let message = officelookWest()
+    res.send (message)
+})
+router.get('/Office/searchSwingingDoor' , (req,res) => {
+    let message = officeSearchSwingingDoor()
+    res.send (message)
+})
+router.get('/Office/enterKitchen' , (req,res) => {
+    let message = officeEnterKitchen()
+    res.send (message)
+})
 
 
 module.exports = router
+
