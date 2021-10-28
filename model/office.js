@@ -98,13 +98,10 @@ function officeLookSouth() {
 function officeSearchFilingCabinet() {
   let message = "You pull on the handle of the filing cabinet and it opens.\n";
   message += "You see there are a large number of files.\n";
-  message +=
-    "You are unable to determine what the files contain on your first glance,\n";
-  message +=
-    "but you do notice they are very organized and set up in numerical order from 1-500.\n";
+  message += "You are unable to determine what the files contain on your first glance,\n";
+  message += "but you do notice they are very organized and set up in numerical order from 1-500.\n";
   message += "Is there a particular file you would like to search?\n";
-  message +=
-    "To search a particular file go to localhost:3000/Office/search?file=# replacing # with a number";
+  message += "To search a particular file go to localhost:3000/Office/search?file=# replacing # with a number";
   return message;
 }
 function officeSearchFile(file) {
