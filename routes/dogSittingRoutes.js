@@ -4,7 +4,9 @@ const router = express.Router()
 
 
 let {newGame, 
-    instructions } = require('../model/newGameInstr')
+    instructions,
+    puppyLocationRandom,
+    search} = require('../model/newGameInstr')//puppyLocationRandom has not been used yet.  newGame route???
 let {foyerLookNorth,
     foyerNorthSearchStaircase,
     foyerNorthSearchLockedDoor,
@@ -69,11 +71,12 @@ let {officeEnter,
     officeUse373,
     officeLookSouth,
     officeSearchFilingCabinet,
-    officeSearch373,
+    officeSearchFile373,
     officeUseDogLifePoochFriend,
     officelookWest,
     officeSearchSwingingDoor,
-    officeEnterKitchen} = require('../model/office')
+    officeEnterKitchen,
+    officeSearchFile} = require('../model/office')
 let {enterBookshelfRoom,
     searchBookshelfRoom,
     bookshelfRoomSearchLever,
@@ -87,14 +90,39 @@ let {enterBookshelfRoom,
     atticUseCoin,
     atticSearchSecretDoor,
     atticEnterSoundStudio} = require('../model/attic') 
-      
-
-router.get('/startGame', async (req, res) => {
-    let message = newGame()
-    message += "              \n"
-    message += instructions()
+//This is not working, I want to see if my randomizer is working.  then where is puppy?
+//I also need to figure out how to check to see if puppy is in the room I am in?  how do I do that?
+//maybe like the file query?endpoint
+router.get ('/PuppyLocation' , (req,res) => {
+    let message = puppyLocationRandom()
+    res.send (message)
+})    
+router.get('/search' , (req,res) => {
+    let location = req.query.location
+    //search function
+    let message = search(location)
     res.send (message)
 })
+
+
+
+
+//below this is all good.
+router.get('/Office/search' , (req,res) => {
+    let file = req.query.file
+    let message = officeSearchFile(file)
+    res.send (message)
+})
+//above this line is all testing
+router.get('', async (req, res) => {
+        let message = newGame()
+        res.send (message)
+    })
+router.get('/startGame', async (req, res) => {
+    let message = instructions()
+    res.send (message)
+})
+    //Need to add the puppy Randomizer function in here. Watch for this line when you are scrolling 
 router.get('/Foyer', async (req,res) => {
     let message = ""
     message += "As the Front door closes behind you, you realize you are in the Foyer.  Where would you like to look?\n"
@@ -357,8 +385,13 @@ router.get('/Office/searchFilingCabinet' , (req,res) => {
     let message = officeSearchFilingCabinet()
     res.send (message)
 })
-router.get('/Office/search373' , (req,res) => {
-    let message = officeSearch373()
+router.get('/Office/searchFile373' , (req,res) => {
+    let message = officeSearchFile373()
+    res.send (message)
+})
+router.get('/Office/search' , (req,res) => {
+    let file = req.query.file
+    let message = officeSearchFile(file)
     res.send (message)
 })
 router.get('/Office/searchFile373' , (req,res) => {

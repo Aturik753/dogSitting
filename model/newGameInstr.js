@@ -1,4 +1,21 @@
+let puppyLocation
+
+const puppyLocationRooms = ["Office", "BookshelfRoom", "Attic"]
+//, "SoundStudio", "Kitchen", "WineRoom" - These are the next rooms to add once they are in the game.
+function puppyLocationRandom() {
+    puppyLocation= puppyLocationRooms[Math.floor(Math.random() * puppyLocationRooms.length)] 
+}
+function search (location) {
+    if (location === puppyLocation){
+        return "puppy found"
+    }else {
+        return "No Puppy"
+    }
+}
+
+
 function newGame(){
+    puppyLocationRandom()
     let message = ""
     message += "                 \n"
     message += "You have just moved to town and are dog sitting for a new client.  \n"
@@ -9,8 +26,11 @@ function newGame(){
     message += "You run up to the home.  You call inside.  Ring the bell.  There is no answer.  \n"
     message += "You have to find puppy, so you step inside and call out.....PUPPY!!!  \n"
     message += "The frontdoor closes behind you and locks!!!\n"
+    message += "If you would like to play, please start the game by going to http://localhost:3000/startGame"
     return message
 }
+
+
 function instructions(){
     let message = ""
     message += "INSTRUCTIONS!\n"
@@ -27,12 +47,16 @@ function instructions(){
     message += "Remember to replace the word 'Room' with the actual name of the Room\n"
     message += "You may type '/useItem', again replacing Item with the name of the item you have found\n"
     message += "To sum up, the main commands are look, search, enter, use\n"
+    message += "To call for puppy to see if he is in the room you are in\n,"
+    message += "go to localhost:3000/search?location=# replacing # with the room you are in like Foyer.\n"
     message += "Good luck!\n"
-    message += "To continue, enter the Foyer at http://localhost:3000/Foyer"
+    message += "To continue, enter the Foyer at http://localhost:3000/Foyer\n"
     return message
 }
 
 module.exports = {
     newGame,
-    instructions
+    instructions,
+    puppyLocationRandom,
+    search,
 }
