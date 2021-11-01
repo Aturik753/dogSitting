@@ -2,36 +2,35 @@ const dogSitting = require("../model/dogSitting");
 const express = require("express");
 const router = express.Router();
 
-let {
-  newGame,
-  instructions,
-  puppyLocationRandom,
-  search,
-} = require("../model/newGameInstr"); //puppyLocationRandom has not been used yet.  newGame route???
-let {
-  foyerLookNorth,
-  foyerNorthSearchStaircase,
-  foyerNorthSearchLockedDoor,
-  foyerNorthSearchKeyhole,
-  foyerNorthStaircaseUseKey64,
-  foyerNorthStaircaseUseKey835,
-  foyerNorthSearchDoor,
-  foyerNorthSearchPowderroom,
-  foyerNorthSearchMirror,
-  foyerNorthUseFlashlight,
-} = require("../model/foyerNorth");
-let {
-  foyerLookEast,
-  foyerEastDoorway,
-  foyerEastEnterLibrary,
-} = require("../model/foyerEast");
-let {
-  foyerLookSouth,
-  foyerSouthSearchFrontdoor,
-} = require("../model/foyerSouth");
-let { foyerLookWest } = require("../model/foyerWest");
-let {
-  libraryEnter,
+let {getRoomList, 
+    getPocketList,
+    getItemListFoyer,
+    getItemListLibrary,
+    getItemListOffice,
+    getItemListAttic,
+    getItemListBookshelfRoom,
+    getItemListPowderRoom  } = require("../model/itemList");
+let {newGame,
+    instructions, 
+    startInstructions,
+    search} = require("../model/newGameInstr"); 
+let {foyerLookNorth,
+    foyerNorthSearchStaircase,
+    foyerNorthSearchLockedDoor,
+    foyerNorthSearchKeyhole,
+    foyerNorthStaircaseUseKey64,
+    foyerNorthStaircaseUseKey835,
+    foyerNorthSearchDoor,
+    foyerNorthSearchPowderroom,
+    foyerNorthSearchMirror,
+    foyerNorthUseFlashlight,
+    foyerLookEast,
+    foyerEastDoorway,
+    foyerEastEnterLibrary,
+    foyerLookSouth,
+    foyerSouthSearchFrontdoor,
+    foyerLookWest} = require("../model/foyer");
+let {libraryEnter,
   libraryLookNorth,
   libraryNorthSearchBookshelves,
   libraryNorthSearchDoor,
@@ -63,8 +62,7 @@ let {
   libraryNorthUseKeypad724518,
   libraryNorthUseKeypad184572,
   libraryNorthUseKeypad187245,
-  libraryNorthEnterBookshelfRoom,
-} = require("../model/library");
+  libraryNorthEnterBookshelfRoom} = require("../model/library");
 let {
   officeEnter,
   officeLookNorth,
@@ -86,10 +84,8 @@ let {
   officelookWest,
   officeSearchSwingingDoor,
   officeEnterKitchen,
-  officeSearchFile,
-} = require("../model/office");
-let {
-  enterBookshelfRoom,
+  officeSearchFile} = require("../model/office");
+let {enterBookshelfRoom,
   searchBookshelfRoom,
   bookshelfRoomSearchLever,
   bookshelfRoomSearchSpiralStairs,
@@ -101,27 +97,67 @@ let {
   atticSearchGumballMachine,
   atticUseCoin,
   atticSearchSecretDoor,
-  atticEnterSoundStudio,
-} = require("../model/attic");
+  atticEnterSoundStudio} = require("../model/attic");
 
-router.get("/search", (req, res) => {
+router.get("/PUPPY", (req, res) => {
   let location = req.query.location;
   //search function
   let message = search(location);
   res.send(message);
 });
+router.get("/Foyer/itemList" , (req,res) => {
+    let message = getItemListFoyer()
+    res.send(message)
+});
+router.get("/Library/itemList" , (req,res) => {
+  let message = getItemListLibrary()
+  res.send(message)
+});
+router.get("/Office/itemList" , (req,res) => {
+  let message = getItemListOffice()
+  res.send(message)
+});
+router.get("/Attic/itemList" , (req,res) => {
+  let message = getItemListAttic()
+  res.send(message)
+});
+router.get("/BookshelfRoom/itemList" , (req,res) => {
+  let message = getItemListBookshelfRoom()
+  res.send(message)
+});
+router.get("/Powderroom/itemList" , (req,res) => {
+  let message = getItemListPowderRoom()
+  res.send(message)
+});
+
+
+
+
+router.get("/roomList" , (req,res) => {
+    let message = getRoomList()
+    res.send(message)
+});
+router.get("/pocketList" , (req,res) => {
+  let message = getPocketList()
+  res.send(message)
+});
 router.get("", async (req, res) => {
   let message = newGame();
   res.send(message);
 });
-router.get("/startGame", async (req, res) => {
+router.get("/startGame" , async (req, res) => {
+  let message = startInstructions();
+  res.send(message);
+});
+router.get("/instructions" , async (req, res) => {
   let message = instructions();
   res.send(message);
 });
 router.get("/Foyer", async (req, res) => {
   let message = "";
   message += "As the Front door closes behind you, you realize you are in the Foyer.  Where would you like to look?\n";
-  message += "/lookNorth, /lookEast, /lookSouth, /lookWest";
+  message += "/Foyer/lookNorth, /Foyer/lookEast, Foyer/lookSouth, Foyer/lookWest\n";
+  message += "After http://localhost:3000 /'Room'/'your command or what you want to do'";
   res.send(message);
 });
 router.get("/Foyer/lookNorth", (req, res) => {
@@ -475,3 +511,4 @@ router.get("/attic/enterSoundStudio", (req, res) => {
 });
 
 module.exports = router;
+

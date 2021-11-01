@@ -1,3 +1,5 @@
+let {clearItemList, getItemList, addItem} = require("../model/itemList");
+
 function foyerLookNorth() {
   let message = "you look north in the Foyer and you see a double Staircase.\n";
   message += "You also see a Door to the right of the stairs\n";

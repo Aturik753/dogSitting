@@ -1,3 +1,6 @@
+let {clearItemList, getItemList, addItem} = require("../model/itemList");
+
+
 function foyerLookSouth() {
   let message = "You look South in the Foyer and see the Frontdoor\n";
   message += "Item list = Frontdoor";
