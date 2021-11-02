@@ -1,4 +1,4 @@
-let {addItem, addRoom, addPocket} = require("../model/itemList");
+let {addItemOffice, addRoom, addPocket} = require("../model/itemList");
 
 
 function officeEnter() {
@@ -7,7 +7,7 @@ function officeEnter() {
 }
 function officeLookNorth() {
   let message = "You look north in the Office and see a short bookshelf to the left with plants on top.\n";
-  message += "To the right, you see part of a curving desk whith a telephone, notepad and pencils.\n";
+  message += "To the right, you see part of a curving desk with a telephone, notepad and pencils.\n";
   message += "Item list = Bookshelf, Phone, Pad, Pencils";
   addItemOffice ("Bookshelf");
   addItemOffice ("Phone");
@@ -69,7 +69,7 @@ function officeLookEast() {
   let message = "You look east in the Office and see a computer sitting on the desk.\n";
   message += "There is a large leather office chair at the desk.\n";
   message += "There is a view from the window showing part of the yard.\n";
-  message += "You notice a dog house in the back corner and a garden.";
+  message += "You notice a dog house in the back corner and a garden.\n";
   message += "Item list = Computer";
   addItemOffice ("Computer");
   return message;
@@ -100,27 +100,27 @@ function officeSearchFilingCabinet() {
   message += "You are unable to determine what the files contain on your first glance,\n";
   message += "but you do notice they are very organized and set up in numerical order from 1-500.\n";
   message += "Is there a particular file you would like to search?\n";
-  message += "To search a particular file go to localhost:3000/Office/search?file=# replacing # with a number";
+  message += "To search a particular file go to localhost:3000/Office/searchFile?file=# replacing # with a number";
   return message;
 }
+function foundFile373(){
+  let message = "You pull out the file labeled 373.\n";
+  message += "Inside you discover a piece of paper with one item on it.\n";
+  message += "DogLifePoochFriend\n";
+  message += "Pocket list = DogLifePoochFriend";
+  addPocket ("DogLifePoochFriend");
+  return message; 
+} 
+function notFile373(){
+  let message = "You find a boring document that does not interest you.\n";
+  return message;
+}  
 function officeSearchFile(file) {
-  let message = "You pull out the file labeled 373.\n";
-  message += "Inside you discover a piece of paper with one item on it.\n";
-  message += "DogLifePoochFriend\n";
-  message += "Item list = DogLifePoochFriend";
   if (+file === 373) {
-    return message;
-  } else return "You find a boring document that does not interest you";
-}
-//I probably do not need the file below this line, but am going to leave in anyway.
-function officeSearchFile373() {
-  let message = "You pull out the file labeled 373.\n";
-  message += "Inside you discover a piece of paper with one item on it.\n";
-  message += "DogLifePoochFriend\n";
-  message += "Item list = DogLifePoochFriend";
-  return message;
-}
-
+    return foundFile373();
+  } else {return notFile373();
+  }
+}  
 function officeUseDogLifePoochFriend() {
   let message = "You sit back down at the computer and try another password.\n";
   message += "DogLifePoochFriend\n";
@@ -128,12 +128,13 @@ function officeUseDogLifePoochFriend() {
   message += "Oh no!!! What comes onto the screen is what looks like a live video!\n";
   message += "you see puppy!  But where is he?  You can't see much more in the video\n";
   message += "He looks ok, but you must find him!  Where could he be?\n";
-  message += "And why would there be a video camera on him and fed to this computer?";
+  message += "And why would there be a video camera on him and a feed to this computer?";
   return message;
 }
 function officelookWest() {
   let message = "You look west in the office.\n";
-  message += "You see a swinging door.\n";
+  message += "To the left, you see a comfortable looking couch and chair.\n";
+  message += "To the right, you see a swinging door.\n";
   message += "Item list = SwingingDoor";
   addItemOffice ("SwingingDoor");
   return message;
@@ -151,7 +152,7 @@ function officeEnterKitchen() {
   return message;
 }
 
-//Anything below this line has not been exported out yet
+
 
 module.exports = {
   officeEnter,
@@ -169,7 +170,6 @@ module.exports = {
   officeUse373,
   officeLookSouth,
   officeSearchFilingCabinet,
-  officeSearchFile373,
   officeUseDogLifePoochFriend,
   officelookWest,
   officeSearchSwingingDoor,
@@ -177,5 +177,3 @@ module.exports = {
   officeSearchFile,
 };
 
-//in here , I would like to create a formula, that if they search anything in the filing cabinet other than
-// 373, it comes back with a generic message, you find a boring document.

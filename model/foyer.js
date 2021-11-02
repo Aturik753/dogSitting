@@ -1,5 +1,5 @@
 
-let {addItemFoyer, addRoom, addPocket} = require("../model/itemList");
+let {addItemFoyer, addRoom, addItemPowderRoom, addPocket} = require("../model/itemList");
 
 
 function foyerLookNorth() {
@@ -25,6 +25,11 @@ function foyerLookNorth() {
   }
   function foyerNorthSearchKeyhole() {
     let message = "Do you have a key?";
+    return message;
+  }
+  function foyerNorthStaircaseUseKey(){
+    let message = "What key are you trying to use?  could you be more specific?\n";
+    message += "Only one particular key will open this door.";
     return message;
   }
   function foyerNorthStaircaseUseKey64() {
@@ -113,6 +118,7 @@ function foyerLookNorth() {
     foyerNorthSearchKeyhole,
     foyerNorthStaircaseUseKey64,
     foyerNorthStaircaseUseKey835,
+    foyerNorthStaircaseUseKey,
     foyerNorthSearchDoor,
     foyerNorthSearchPowderroom,
     foyerNorthSearchMirror,

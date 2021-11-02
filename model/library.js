@@ -1,7 +1,7 @@
-let {addItem, addRoom, addPocket} = require("../model/itemList");
+let {addItemLibrary, addRoom, addPocket} = require("../model/itemList");
 
 function libraryEnter() {
-  let message = "you enter the Library and call for the puppy but hear nothing.\n";
+  let message = "you enter the Library.  Don't forget to call out for puppy!.\n";
   return message;
 }
 function libraryLookNorth() {
@@ -53,7 +53,7 @@ function libraryEastSearchBrick() {
   message += "You wiggle and pull the brick until it comes loose.\n";
   message += "Once you get the brick out, you see a hole behind it.\n";
   message += "Item list = Hole";
-  addList ("Hole");
+  addItemLibrary ("Hole");
   return message;
 }
 function libraryEastSearchHole() {
@@ -105,7 +105,7 @@ function libraryLookSouth() {
 }
 function librarySouthSearchDesk() {
   let message = "You search the desk.  You see some loose papers, a lamp \n";
-  message +=    "and a few pens.  There are several drawers on either side of the desk./n";
+  message +=    "and a few pens.  There are several drawers on either side of the desk.\n";
   message += "Item list = Drawers";
   addItemLibrary ("Drawers");
   return message;
@@ -165,50 +165,36 @@ function libraryNorthSearchJSForDummies() {
   return message;
 }
 function libraryNorthSearchKeypad() {
-  let message = "The keypad has digits 1 through 9 and a screen above it./n";
+  let message = "The keypad has digits 1 through 9 and a screen above it.\n";
   message += "What on earth could this be for?\n";
   message += "What could I use here?";
   return message;
 }
 function libraryNorthUseKeypad() {
-  let message = "Hint-to use keypad, enter a numerical code after the word keypad";
+  let message = "Hint-to use keypad, enter a numerical code.\n";
+  message += "Go to localhost:3000/Library/useKeypadCode?file=# replacing # with a code";
   return message;
 }
-
-//I would like to change this into an if ele statement so that if they enter any other code it comes back with ...you entered teh wrong code.  access denied
-// in the file office, there is one that works use that as a guide
-function libraryNorthUseKeypad457218() {
+function keypad457218(){
   let message = "The screen lights up green 'GRANTED'\n";
   message += "There is a loud click and the bookshelf shifts slightly.\n";
   message += "You reach out and give the bookshelf a little push and feel it move further.\n";
   message += "You begin to push with more force and the entire bookshelf swings away from you\n";
   message += "revealing a hidden room behind it.\n";
-  message += "You found a new room!'BookshelfRoom'.\n";
+  message += "You found a new room! = BookshelfRoom.\n";
   addRoom ("BookshelfRoom");
-  return message;
-
-
-}
-function libraryNorthUseKeypad451872() {
+  return message; 
+} 
+function keypadWrong(){
   let message = "The screen lights up red 'DENIED'";
   return message;
-}
-function libraryNorthUseKeypad721845() {
-  let message = "The screen lights up red 'DENIED'";
-  return message;
-}
-function libraryNorthUseKeypad724518() {
-  let message = "The screen lights up red 'DENIED'";
-  return message;
-}
-function libraryNorthUseKeypad184572() {
-  let message = "The screen lights up red 'DENIED'";
-  return message;
-}
-function libraryNorthUseKeypad187245() {
-  let message = "The screen lights up red 'DENIED'";
-  return message;
-}
+}  
+function UseKeypadCode(file) {
+  if (+file === 457218) {
+    return keypad457218();
+  } else {return keypadWrong();
+  }
+}  
 function libraryNorthEnterBookshelfRoom() {
   let message = "You enter the hidden room behind the bookshelf.\n";
   message += "Please go to http://localhost:3000/BookshelfRoom\n";
@@ -246,11 +232,6 @@ module.exports = {
   libraryNorthSearchJSForDummies,
   libraryNorthSearchKeypad,
   libraryNorthUseKeypad,
-  libraryNorthUseKeypad457218,
-  libraryNorthUseKeypad451872,
-  libraryNorthUseKeypad721845,
-  libraryNorthUseKeypad724518,
-  libraryNorthUseKeypad184572,
-  libraryNorthUseKeypad187245,
+  UseKeypadCode,
   libraryNorthEnterBookshelfRoom,
 };

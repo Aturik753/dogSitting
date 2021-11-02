@@ -28,17 +28,21 @@ let itemListLibrary = []
 
 function clearItemListLibrary(){
    itemListLibrary = []
+   console.log ("Clear Item list Library", itemListLibrary)
 }
 function getItemListLibrary(){
+    console.log ("get item list Library", itemListLibrary)
     return itemListLibrary
 }
 function addItemLibrary(itemLibrary){
     var existingItemLibrary = itemListLibrary.find(function(checkItemLibrary){
         return checkItemLibrary == itemLibrary
     })
+    console.log ("Looking for ", itemLibrary , "In " , itemListLibrary, "found in", existingItemLibrary)
     if (existingItemLibrary == null){
         itemListLibrary.push(itemLibrary)
         }
+    console.log ("after push Item Library", itemListLibrary)
 }
 
 
@@ -110,6 +114,24 @@ function addItemPowderRoom(itemPowderRoom){
         itemListPowderRoom.push(itemPowderRoom)
         }
 }
+
+let itemListSoundStudio = []
+
+function clearItemListSoundStudio(){
+   itemListSoundStudio = []
+}
+function getItemListSoundStudio(){
+    return itemListPowderRoom
+}
+function addItemSoundStudio(itemSoundStudio){
+    var existingItemSoundStudio = itemListSoundStudio.find(function(checkItemSoundStudio){
+        return checkItemSoundStudio == itemSoundStudio
+    })
+    if (existingItemSoundStudio == null){
+        itemListSoundStudio.push(itemSoundStudio)
+        }
+}
+
 let roomList = []
 
 function clearRoomList(){
@@ -130,7 +152,7 @@ function addRoom(room){
     console.log ("after room push", roomList)
 }
 
-let PocketList = []
+let pocketList = []
 
 function clearPocketList(){
    pocketList = []
@@ -178,5 +200,8 @@ module.exports = {
     addItemBookshelfRoom,
     clearItemListPowderRoom, 
     getItemListPowderRoom, 
-    addItemPowderRoom
+    addItemPowderRoom,
+    clearItemListSoundStudio, 
+    getItemListSoundStudio, 
+    addItemSoundStudio,
 }

@@ -26,8 +26,8 @@ function puppyFound(){
 let puppyLocation;
 
 
-const puppyLocationRooms = ["Office", "BookshelfRoom", "Attic"];
-//, "SoundStudio", "Kitchen", "WineRoom" - These are the next rooms to add once they are in the game.
+const puppyLocationRooms = ["Office", "BookshelfRoom", "Attic", "SecretRoomAttic", "SoundStudio"];
+//, "Kitchen", "WineRoom" - These are the next rooms to add once they are in the game.
 function puppyLocationRandom() {
   puppyLocation =
     puppyLocationRooms[Math.floor(Math.random() * puppyLocationRooms.length)];
@@ -95,6 +95,7 @@ function startInstructions() {
   message += "A description will come up, and if there are items you may interact with they will be given in a list at the end.  \n";
   message += "you may type the commands.....look, search, enter or use.  for example..... :3000/Foyer/searchDoor  \n";
   message += "Always start with the room you are in, followed by / then your command and what you want to do....:3000/Foyer/enterLibrary  \n";
+  message += "You can check what rooms you have found so far at :3000/RoomList.\n";
   message += "If you need to check what you have found in that room so far, use roomList.....for example   :3000/Foyer/roomList\n";
   message += "If you have picked anything up and put it in your pocket, you can check your pocket at :3000/pocketList\n";
   message += "If you have need a reminder of these instructions, go to ...... :3000/instructions\n";
@@ -110,17 +111,16 @@ function instructions() {
   message += "Instructions.  \n";
   message += " \n";
   message += "Using the url http://localhost:3000/ you will add to the end in the following manner.  \n";
-  message += "You will add the room you are in first......for example     :3000/Foyer  \n";
-  message += "You may look North, South, East or West in each room that you are in.....for example    :3000/Foyer/lookNorth.  \n";
-  message += "A description will come up, and if there are items you may interact with they will be given in a list at the end.  \n";
-  message += "you may type the commands.....look, search, enter or use.  for example..... :3000/Foyer/searchDoor  \n";
-  message += "Always start with the room you are in, followed by / then your command and what you want to do....:3000/Foyer/enterLibrary  \n";
-  message += "If you need to check what you have found in that room so far, use roomList.....for example   :3000/Foyer/roomList\n";
-  message += "If you have picked anything up and put it in your pocket, you can check your pocket at :3000/pocketList\n";
-  message += "If you have need a reminder of these instructions, go to ...... :3000/instructions\n";
-  message += "Call out for puppy in each room to see if he is there!......for example :3000/PUPPY?location=Foyer....replacing Foyer with the room you are in\n";
+  message += "Call out for puppy in each room to see if he is there!\n";
+  message += "Replace Foyer with the room you are in example          :3000/PUPPY?location=Foyer\n";
+  message += "Always start with the room you are in, followed by / then your command and what you want to do.  \n";
+  message += "You will add the room you are in first. For example     :3000/Foyer  \n";
+  message += "You may look North, South, East or West in each room    :3000/Foyer/lookNorth.  \n";
+  message += "you may type commands look, search, enter or use        :3000/Foyer/searchDoor  \n";
+  message += "You can check what rooms you have found so far at       :3000/RoomList.\n";
+  message += "To check what you have found in that room so far        :3000/Foyer/roomList\n";
+  message += "If you have put anyting in your pocket, check at        :3000/PocketList\n";
   message += "Good Luck!\n";
-  message += "To continue, enter the Foyer at http://localhost:3000/Foyer\n";
   return message;
 }
 module.exports = {
