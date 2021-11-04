@@ -201,7 +201,18 @@ function libraryNorthEnterBookshelfRoom() {
   return message;
 }
 function libraryLookWest() {
-  let message = "You look west in the Library and see the doorway to the Foyer";
+  let message = "You look west in the Library and see a doorway.\n";
+  message += "Item list = Doorway";
+  addItemLibrary ("Doorway")
+  return message;
+}
+function librarySearchDoorway() {
+  let message = "You take a look at the doorway and see that it leads to the Foyer.\n";
+  return message;
+}
+function libraryEnterFoyer() {
+  let message = "You are now in the Foyer.\n";
+  message += "Go to http://localhost:3000/Foyer";
   return message;
 }
 
@@ -234,4 +245,6 @@ module.exports = {
   libraryNorthUseKeypad,
   UseKeypadCode,
   libraryNorthEnterBookshelfRoom,
+  librarySearchDoorway,
+  libraryEnterFoyer
 };

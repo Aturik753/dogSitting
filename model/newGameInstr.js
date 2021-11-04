@@ -5,7 +5,11 @@ let {clearRoomList,
   clearItemListOffice, 
   clearItemListAttic, 
   clearItemListBookshelfRoom,
-  clearItemListPowderRoom} = require("../model/itemList");
+  clearItemListPowderRoom,
+  clearItemListKitchen,
+  clearItemListDeck,
+  clearItemListWineRoom,
+} = require("../model/itemList");
 
 function puppyFound(){
   let message = "You call out for puppy.  You hear a restle and a whimper and you see puppy running towards you.\n";
@@ -13,21 +17,23 @@ function puppyFound(){
   message += "You hear a loud, deep voice, which sounds like it is coming from everywhere!\n";
   message += "'Take your dog and Go!  Next time you will not be so lucky.  If you enter my home again, I will keep more than just the dog!'\n";
   message += "Trembling, you hold on to puppy as tight as you can and begin to run.\n";
-  message += "As you enter the Foyer, you look up and see that the front door is open./n";
+  message += "As you enter the Foyer, you look up and see that the front door is open.\n";
   message += "You move as fast as you can and fly through the open door.\n";
   message += "You make it to the street but don't slow down and continue to run until you are home safe and sound.\n";
   message += "   \n";
-  message += "THE END\,";
+  message += "THE END\n,";
   message += " \n";
-  message += "Thank you for playing, I hope you enjoyed the game.  If you would like to play again, go to /startGame."
+  message += "Thank you for playing, I hope you enjoyed the game.\n";  
+  message += "If you would like to play again, go to /startGame.\n";
+  message += "\n";
   return message;
 }
 
 let puppyLocation;
 
 
-const puppyLocationRooms = ["Office", "BookshelfRoom", "Attic", "SecretRoomAttic", "SoundStudio"];
-//, "Kitchen", "WineRoom" - These are the next rooms to add once they are in the game.
+const puppyLocationRooms = ["Office", "BookshelfRoom", "Attic", "SecretRoomAttic", "SoundStudio, Kitchen, WineRoom, Deck"];
+//," Dining Room, Den, Hallway, Then upstairs bedrooms" - These are the next rooms to add once they are in the game.
 function puppyLocationRandom() {
   puppyLocation =
     puppyLocationRooms[Math.floor(Math.random() * puppyLocationRooms.length)];
@@ -41,39 +47,19 @@ function search(location) {
 }
 
 function newGame() {
-  clearRoomList();
-  clearPocketList();
-  clearItemListFoyer(); 
-  clearItemListLibrary(); 
-  clearItemListOffice();
-  clearItemListAttic();
-  clearItemListBookshelfRoom();
-  clearItemListPowderRoom();
   let message = "";
   message += "                 \n";
-  message +=
-    "You have just moved to town and are dog sitting for a new client.  \n";
+  message += "You have just moved to town and are dog sitting for a new client.  \n";
   message += "As you are out for a walk with puppy, \n";
-  message +=
-    "there is a bright flash of lightening and a crash of thunder!  \n";
+  message += "there is a bright flash of lightening and a crash of thunder!  \n";
   message += "The puppy yelps and pulls the leash out of your grip.  \n";
-  message +=
-    "The puppy runs into a nearby house where the front door was left open.  \n";
-  message +=
-    "You run up to the home.  You call inside.  Ring the bell.  There is no answer.  \n";
-  message +=
-    "You have to find puppy, so you step inside and call out.....PUPPY!!!  \n";
+  message += "The puppy runs into a nearby house where the front door was left open.  \n";
+  message += "You run up to the home.  You call inside.  Ring the bell.  There is no answer.  \n";
+  message += "You have to find puppy, so you step inside and call out.....PUPPY!!!  \n";
   message += "The frontdoor closes behind you and locks!!!\n";
-  message +=
-    "If you would like to play, please start the game by going to http://localhost:3000/startGame";
+  message += "If you would like to play, please start the game by going to http://localhost:3000/startGame";
   return message;
 }
-
-
-
-
-
-
 
 function startInstructions() {
   puppyLocationRandom();
@@ -85,6 +71,9 @@ function startInstructions() {
   clearItemListAttic();
   clearItemListBookshelfRoom();
   clearItemListPowderRoom();
+  clearItemListKitchen();
+  clearItemListDeck();
+  clearItemListWineRoom();
   let message = "";
   message += "                 \n";
   message += "Instructions.  \n";
@@ -125,8 +114,8 @@ function instructions() {
 }
 module.exports = {
   newGame,
+  startInstructions,
   instructions,
   puppyLocationRandom,
-  search,
-  startInstructions
+  search  
 };

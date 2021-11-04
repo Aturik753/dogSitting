@@ -1,9 +1,9 @@
 let {addItemAttic, addRoom, addPocket, addItemBookshelfRoom, addItemSoundStudio} = require("../model/itemList");
 
 function enterBookshelfRoom() {
-  let message = "You slowly move the bookshelf door farther to try and let more light in.\n";
+  let message = "You slowly move the door farther to try and let more light in.\n";
   message += "You still can't see anything beyond the doorway.\n";
-  message += "You take a deep breath and step inside.  You listen and hear nothing.\n";
+  message += "You take a deep breath.  You listen and hear nothing.\n";
   message += "As you take a step deeper, you triger a motion sensor and a mild light turns on.\n";
   message += "You are in a small room with bare stone walls in every direction.\n";
   message += "The door swings shut behind you!\n";
@@ -34,6 +34,7 @@ function bookshelfRoomSearchLever() {
   message += "As you pull the lever down, the door swings open.\n";
   message += "This is a secret entrance to the Library.\n";
   message += "Please go to http://localhost:3000/Library to enter the Library.\n";
+  addRoom("Library");
   return message;
 }
 function bookshelfRoomSearchSpiralStairs() {

@@ -50,9 +50,12 @@ let itemListAttic = []
 
 function clearItemListAttic(){
    itemListAttic = []
+   console.log ("Clear Item list Attic", itemListAttic)
 }
 function getItemListAttic(){
+    console.log ("Get item list Attic", itemListAttic)
     return itemListAttic
+    
 }
 function addItemAttic(itemAttic){
     var existingItemAttic = itemListAttic.find(function(checkItemAttic){
@@ -61,23 +64,27 @@ function addItemAttic(itemAttic){
     if (existingItemAttic == null){
         itemListAttic.push(itemAttic)
         }
+        console.log ("after push Item Attic", itemListAttic)
 }
 
 let itemListOffice = []
 
 function clearItemListOffice(){
    itemListOffice = []
+   console.log ("Clear Item list Office", itemListOffice)
 }
 function getItemListOffice(){
+    console.log ("Get item list Office", itemListOffice)
     return itemListOffice
 }
 function addItemOffice(itemOffice){
     var existingItemOffice = itemListOffice.find(function(checkItemOffice){
-        return checkItemOffice == itemOffice
+        return checkItemOffice == itemOffice  
     })
     if (existingItemOffice == null){
         itemListOffice.push(itemOffice)
         }
+        console.log ("after push Item Office", itemListOffice)
 }
 
 
@@ -85,8 +92,10 @@ let itemListBookshelfRoom = []
 
 function clearItemListBookshelfRoom(){
    itemListBookshelfRoom = []
+   console.log ("Clear Item list BookshelfRoom", itemListBookshelfRoom)
 }
 function getItemListBookshelfRoom(){
+    console.log ("Get item list BookshelfRoom", itemListBookshelfRoom)
     return itemListBookshelfRoom
 }
 function addItemBookshelfRoom(itemBookshelfRoom){
@@ -96,14 +105,17 @@ function addItemBookshelfRoom(itemBookshelfRoom){
     if (existingItemBookshelfRoom == null){
         itemListBookshelfRoom.push(itemBookshelfRoom)
         }
+        console.log ("after push Item BookshelfRoom", itemListBookshelfRoom)
 }
 
 let itemListPowderRoom = []
 
 function clearItemListPowderRoom(){
    itemListPowderRoom = []
+   console.log ("Clear Item list PowderRoom", itemListPowderRoom)
 }
 function getItemListPowderRoom(){
+    console.log ("Get item list PowderRoom", itemListPowderRoom)
     return itemListPowderRoom
 }
 function addItemPowderRoom(itemPowderRoom){
@@ -113,14 +125,17 @@ function addItemPowderRoom(itemPowderRoom){
     if (existingItemPowderRoom == null){
         itemListPowderRoom.push(itemPowderRoom)
         }
+        console.log ("after push Item PowderRoom", itemListPowderRoom)
 }
 
 let itemListSoundStudio = []
 
 function clearItemListSoundStudio(){
    itemListSoundStudio = []
+   console.log ("Clear Item list SoundStudio", itemListSoundStudio)
 }
 function getItemListSoundStudio(){
+    console.log ("Get item list SoundStudio", itemListSoundStudio)
     return itemListPowderRoom
 }
 function addItemSoundStudio(itemSoundStudio){
@@ -130,7 +145,72 @@ function addItemSoundStudio(itemSoundStudio){
     if (existingItemSoundStudio == null){
         itemListSoundStudio.push(itemSoundStudio)
         }
+        console.log ("after push Item SoundStudio", itemListSoundStudio)
 }
+
+let itemListKitchen = []
+
+function clearItemListKitchen(){
+   itemListKitchen = []
+   console.log ("Clear Item list Kitchen", itemListKitchen)
+}
+function getItemListKitchen(){
+    console.log ("Get item list Kitchen", itemListKitchen)
+    return itemListKitchen
+}
+function addItemKitchen(itemKitchen){
+    var existingItemKitchen = itemListKitchen.find(function(checkItemKitchen){
+        return checkItemKitchen == itemKitchen
+    })
+    if (existingItemKitchen == null){
+        itemListKitchen.push(itemKitchen)
+        }
+        console.log ("after push Item Kitchen", itemListKitchen)
+}
+
+let itemListDeck = []
+
+function clearItemListDeck(){
+   itemListDeck = []
+   console.log ("Clear Item list Deck", itemListDeck)
+}
+function getItemListDeck(){
+    console.log ("Get item list Deck", itemListDeck)
+    return itemListDeck
+}
+function addItemDeck(itemDeck){
+    var existingItemDeck = itemListDeck.find(function(checkItemDeck){
+        return checkItemDeck == itemDeck
+    })
+    if (existingItemDeck == null){
+        itemListDeck.push(itemDeck)
+        }
+        console.log ("after push Item Deck", itemListDeck)
+}
+
+
+let itemListWineRoom = []
+
+function clearItemListWineRoom(){
+   itemListWineRoom = []
+   console.log ("Clear Item list WineRoom", itemListWineRoom)
+}
+function getItemListWineRoom(){
+    console.log ("Get item list WineRoom", WineRoom)
+    return itemListWineRoom
+}
+function addItemWineRoom(itemWineRoom){
+    var existingItemWineRoom = itemListWineRoom.find(function(checkItemWineRoom){
+        return checkItemWineRoom == itemWineRoom
+    })
+    if (existingItemWineRoom == null){
+        itemListWineRoom.push(itemWineRoom)
+        }
+        console.log ("after push Item WineRoom", itemListWineRoom)
+}
+
+
+
 
 let roomList = []
 
@@ -161,10 +241,6 @@ function clearPocketList(){
 function getPocketList(){
     console.log ("get room list", pocketList)
     return pocketList
-}
-function addPocket(pocket){
-    pocketList.push(pocket)
-    console.log ("after room push", pocketList)
 }
 function addPocket(pocket){
     var existingPocket = pocketList.find(function(checkpocket){
@@ -201,7 +277,16 @@ module.exports = {
     clearItemListPowderRoom, 
     getItemListPowderRoom, 
     addItemPowderRoom,
+    clearItemListKitchen, 
+    getItemListKitchen, 
+    addItemKitchen,
     clearItemListSoundStudio, 
     getItemListSoundStudio, 
     addItemSoundStudio,
+    clearItemListDeck, 
+    getItemListDeck, 
+    addItemDeck,
+    clearItemListWineRoom, 
+    getItemListWineRoom, 
+    addItemWineRoom,
 }

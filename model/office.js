@@ -87,11 +87,24 @@ function officeUse373() {
 }
 function officeLookSouth() {
   let message = "You look south in the Office.\n";
-  message += "you see the door to the Library.\n";
+  message += "you see a door.\n";
   message += "On the left of the door you see a filing cabinet.\n";
   message += "On the right of the door you see a comfortable looking couch and chair.\n";
-  message += "Item list = FilingCabinet";
+  message += "Item list = FilingCabinet, Door";
   addItemOffice ("FilingCabinet");
+  addItemOffice ("Door");
+  return message;
+}
+function officeSearchDoor() {
+  let message = "You search the door and discover that it is unlocked.\n";
+  message += "You turn the handle and open the door to what looks like a library.\n";
+  message += "You have found a new room = Library";
+  addRoom ("Library");
+  return message;
+}
+function officeEnterLibrary() {
+  let message = "You walk through the door and are now in the library\n";
+  message += "Go to http://localhost:3000/Library";
   return message;
 }
 function officeSearchFilingCabinet() {
@@ -169,6 +182,8 @@ module.exports = {
   officeSearchComputer,
   officeUse373,
   officeLookSouth,
+  officeSearchDoor,
+  officeEnterLibrary,
   officeSearchFilingCabinet,
   officeUseDogLifePoochFriend,
   officelookWest,

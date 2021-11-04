@@ -1,4 +1,4 @@
-const dogSitting = require("../model/dogSitting");
+//const dogSitting = require("../model/dogSitting");
 const express = require("express");
 const router = express.Router();
 
@@ -10,7 +10,10 @@ let {getRoomList,
     getItemListAttic,
     getItemListBookshelfRoom,
     getItemListPowderRoom,
-    getItemListSoundStudio} = require("../model/itemList");
+    getItemListSoundStudio,
+    getItemListKitchen,
+    getItemListDeck,
+    getItemListWineRoom} = require("../model/itemList");
 let {newGame,
     instructions, 
     startInstructions,
@@ -59,7 +62,9 @@ let {libraryEnter,
   libraryNorthSearchKeypad,
   libraryNorthUseKeypad,
   UseKeypadCode,
-  libraryNorthEnterBookshelfRoom} = require("../model/library");
+  libraryNorthEnterBookshelfRoom,
+  librarySearchDoorway,
+  libraryEnterFoyer} = require("../model/library");
 let {
   officeEnter,
   officeLookNorth,
@@ -75,6 +80,8 @@ let {
   officeSearchComputer,
   officeUse373,
   officeLookSouth,
+  officeSearchDoor,
+  officeEnterLibrary,
   officeSearchFilingCabinet,
   officeUseDogLifePoochFriend,
   officelookWest,
@@ -119,6 +126,35 @@ let {enterBookshelfRoom,
   soundStudioUseLightingStand,
   soundStudioSearchFloorButton,
   soundStudioUseFloorButton} = require("../model/attic");
+let {kitchenEnter,
+  kitchenLookNorth,
+  kitchenSearchCookieJar,
+  kitchenSearchKey64,
+  kitchenUseKey64,
+  kitchenlookEast,
+  KitchenSearchSwingingDoor,
+  kitchenEnterOffice,
+  kitchenLookSouth,
+  kitchenSearchCabinetDoor,
+  kitchenSearchKeyhole,
+  kitchenUseKey,
+  kitchenUseKey835,
+  kitchenEnterWineRoom,
+  kitchenLookWest,
+  kitchenSearchDoorway,
+  kitchenEnterDiningRoom,
+  kitchenSearchDoor,
+  kitchenEnterDeck,
+  deckEnter,
+  wineRoomEnter,
+  wineRoomLookNorth,
+  wineRoomLookEast,
+  wineRoomLookSouth,
+  wineRoomLookWest,
+  wineRoomSearchRedWine,
+  wineRoomSearchSecretWineDoor,
+  wineRoomEnterSecretWineDoor,
+  wineRoom} = require("../model/kitchen");  
 
 router.get("/PUPPY", (req, res) => {
   let location = req.query.location;
@@ -152,6 +188,18 @@ router.get("/Powderroom/itemList" , (req,res) => {
 });
 router.get("/SoundStudio/itemList" , (req,res) => {
   let message = getItemListSoundStudio()
+  res.send(message)
+});
+router.get("/Kitchen/itemList" , (req,res) => {
+  let message = getItemListKitchen()
+  res.send(message)
+});
+router.get("/Deck/itemList" , (req,res) => {
+  let message = getItemListDeck()
+  res.send(message)
+});
+router.get("/WineRoom/itemList" , (req,res) => {
+  let message = getItemListWineRoom()
   res.send(message)
 });
 
@@ -349,6 +397,14 @@ router.get("/Library/lookWest", (req, res) => {
   let message = libraryLookWest();
   res.send(message);
 });
+router.get("/Library/searchDoorway", (req, res) => {
+  let message = librarySearchDoorway();
+  res.send(message);
+});
+router.get("/Library/enterFoyer", (req, res) => {
+  let message = libraryEnterFoyer();
+  res.send(message);
+});
 router.get("/Library/searchHarryPotter", (req, res) => {
   let message = libraryNorthSearchHarryPotter();
   res.send(message);
@@ -436,6 +492,14 @@ router.get("/Office/use373", (req, res) => {
 });
 router.get("/Office/lookSouth", (req, res) => {
   let message = officeLookSouth();
+  res.send(message);
+});
+router.get("/Office/searchDoor", (req, res) => {
+  let message = officeSearchDoor();
+  res.send(message);
+});
+router.get("/Office/enterLibrary", (req, res) => {
+  let message = officeEnterLibrary();
   res.send(message);
 });
 router.get("/Office/searchFilingCabinet", (req, res) => {
@@ -615,7 +679,124 @@ router.get("/SoundStudio/useFloorButton", (req, res) => {
   let message = soundStudioUseFloorButton ();
   res.send(message);
 });
+router.get("/Kitchen" , (req, res) => {
+  let message = kitchenEnter();
+  res.send(message);
+})
+router.get("/Kitchen/lookNorth", (req, res) => {
+  let message = kitchenLookNorth();
+  res.send(message);
+})
+router.get("/Kitchen/searchCookieJar", (req, res) => {
+  let message = kitchenSearchCookieJar();
+  res.send(message);
+})
+router.get("/Kitchen/searchKey64", (req, res) => {
+  let message = kitchenSearchKey64();
+  res.send(message);
+})
+router.get("/Kitchen/useKey64", (req, res) => {
+  let message = kitchenUseKey64();
+  res.send(message);
+})
+router.get("/Kitchen/searchKey835", (req, res) => {
+  let message = "The key says 835 on it";
+  res.send(message);
+})
+router.get("/Kitchen/useKey835", (req, res) => {
+  let message = kitchenUseKey835();
+  res.send(message);
+})
+router.get("/Kitchen/lookEast", (req, res) => {
+  let message = kitchenlookEast();
+  res.send(message);
+})
+router.get("/Kitchen/searchSwingingDoor", (req, res) => {
+  let message = KitchenSearchSwingingDoor();
+  res.send(message);
+})
+router.get("/Kitchen/enterOffice", (req, res) => {
+  let message = kitchenEnterOffice();
+  res.send(message);
+})
+router.get("/Kitchen/lookSouth", (req, res) => {
+  let message = kitchenLookSouth();
+  res.send(message);
+})
+router.get("/Kitchen/searchCabinetDoor", (req, res) => {
+  let message = kitchenSearchCabinetDoor();
+  res.send(message);
+})
+router.get("/Kitchen/searchKeyhole", (req, res) => {
+  let message = kitchenSearchKeyhole();
+  res.send(message);
+})
+router.get("/Kitchen/useKey", (req, res) => {
+  let message = kitchenUseKey();
+  res.send(message);
+})
+router.get("/Kitchen/enterWineRoom", (req, res) => {
+  let message = kitchenEnterWineRoom();
+  res.send(message);
+})
+router.get("/Kitchen/lookWest", (req, res) => {
+  let message = kitchenLookWest();
+  res.send(message);
+})
+router.get("/Kitchen/searchDoorway", (req, res) => {
+  let message = kitchenSearchDoorway();
+  res.send(message);
+})
+router.get("/Kitchen/enterDiningRoom", (req, res) => {
+  let message = kitchenEnterDiningRoom();
+  res.send(message);
+})
+router.get("/Kitchen/searchDoor", (req, res) => {
+  let message = kitchenSearchDoor();
+  res.send(message);
+})
+router.get("/Kitchen/enterDeck", (req, res) => {
+  let message = kitchenEnterDeck();
+  res.send(message);
+})
+router.get("/Deck", (req, res) => {
+  let message = deckEnter();
+  res.send(message);
+})
+router.get("/WineRoom", (req, res) => {
+  let message = wineRoomEnter();
+  res.send(message);
+})
+router.get("/WineRoom/lookNorth", (req, res) => {
+  let message = wineRoomLookNorth();
+  res.send(message);
+})
+router.get("/WineRoom/lookEast", (req, res) => {
+  let message = wineRoomLookEast();
+  res.send(message);
+})
+router.get("/WineRoom/lookSouth", (req, res) => {
+  let message = wineRoomLookSouth();
+  res.send(message);
+})
+router.get("/WineRoom/lookWest", (req, res) => {
+  let message = wineRoomLookWest();
+  res.send(message);
+})
+router.get("/WineRoom/searchRedWine", (req, res) => {
+  let message = wineRoomSearchRedWine();
+  res.send(message);
+})
+router.get("/WineRoom/searchSecretWineDoor", (req, res) => {
+  let message = wineRoomSearchSecretWineDoor();
+  res.send(message);
+})
+router.get("/WineRoom/enterSecretWineDoor", (req, res) => {
+  let message = wineRoomEnterSecretWineDoor();
+  res.send(message);
+})
+
+
 
 module.exports = router;
-
 
