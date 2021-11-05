@@ -210,6 +210,26 @@ function addItemWineRoom(itemWineRoom){
 }
 
 
+let itemListDiningRoom = []
+
+function clearItemListDiningRoom(){
+   itemListDiningRoom = []
+   console.log ("Clear Item list DiningRoom", itemListDiningRoom)
+}
+function getItemListDiningRoom(){
+    console.log ("Get item list DiningRoom", DiningRoom)
+    return itemListDiningRoom
+}
+function addItemDiningRoom(itemDiningRoom){
+    var existingItemDiningRoom = itemListDiningRoom.find(function(checkItemDiningRoom){
+        return checkItemDiningRoom == itemDiningRoom
+    })
+    if (existingItemDiningRoom == null){
+        itemListDiningRoom.push(itemDiningRoom)
+        }
+        console.log ("after push Item DiningRoom", itemListDiningRoom)
+}
+
 
 
 let roomList = []
@@ -289,4 +309,7 @@ module.exports = {
     clearItemListWineRoom, 
     getItemListWineRoom, 
     addItemWineRoom,
+    clearItemListDiningRoom, 
+    getItemListDiningRoom, 
+    addItemDiningRoom,
 }

@@ -13,7 +13,8 @@ let {getRoomList,
     getItemListSoundStudio,
     getItemListKitchen,
     getItemListDeck,
-    getItemListWineRoom} = require("../model/itemList");
+    getItemListWineRoom,
+    getItemListDiningRoom} = require("../model/itemList");
 let {newGame,
     instructions, 
     startInstructions,
@@ -153,8 +154,21 @@ let {kitchenEnter,
   wineRoomLookWest,
   wineRoomSearchRedWine,
   wineRoomSearchSecretWineDoor,
-  wineRoomEnterSecretWineDoor,
-  wineRoom} = require("../model/kitchen");  
+  wineRoomEnterSecretWineDoor} = require("../model/kitchen");  
+let {
+  diningRoomEnter,
+  diningRoomLookNorth,
+  diningRoomLookEast,
+  diningRoomSearchDoorway,
+  diningRoomEnterKitchen,
+  diningRoomLookSouth,
+  diningRoomSearchFrenchDoors,
+  diningRoomEnterDen,
+  diningRoomLookWest} = require("../model/diningRoom");
+
+
+
+
 
 router.get("/PUPPY", (req, res) => {
   let location = req.query.location;
@@ -200,6 +214,10 @@ router.get("/Deck/itemList" , (req,res) => {
 });
 router.get("/WineRoom/itemList" , (req,res) => {
   let message = getItemListWineRoom()
+  res.send(message)
+});
+router.get("/DiningRoom/itemList" , (req,res) => {
+  let message = getItemListDiningRoom()
   res.send(message)
 });
 
@@ -795,7 +813,42 @@ router.get("/WineRoom/enterSecretWineDoor", (req, res) => {
   let message = wineRoomEnterSecretWineDoor();
   res.send(message);
 })
-
+router.get("/DiningRoom", (req, res) => {
+  let message = diningRoomEnter();
+  res.send(message);
+})
+router.get("/DiningRoom/lookNorth", (req, res) => {
+  let message = diningRoomLookNorth();
+  res.send(message);
+})
+router.get("/DiningRoom/lookEast", (req, res) => {
+  let message = diningRoomLookEast();
+  res.send(message);
+})
+router.get("/DiningRoom/searchDoorway", (req, res) => {
+  let message = diningRoomSearchDoorway();
+  res.send(message);
+})
+router.get("/DiningRoom/enterKitchen", (req, res) => {
+  let message = diningRoomEnterKitchen();
+  res.send(message);
+})
+router.get("/DiningRoom/lookSouth", (req, res) => {
+  let message = diningRoomLookSouth();
+  res.send(message);
+})
+router.get("/DiningRoom/searchFrenchDoors", (req, res) => {
+  let message = diningRoomSearchFrenchDoors();
+  res.send(message);
+})
+router.get("/DiningRoom/enterDen", (req, res) => {
+  let message = diningRoomEnterDen();
+  res.send(message);
+})
+router.get("/DiningRoom/lookWest", (req, res) => {
+  let message = diningRoomLookWest();
+  res.send(message);
+})
 
 
 module.exports = router;
