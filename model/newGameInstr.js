@@ -9,7 +9,8 @@ let {clearRoomList,
   clearItemListKitchen,
   clearItemListDeck,
   clearItemListWineRoom,
-  clearItemListDiningRoom
+  clearItemListDiningRoom,
+  clearItemListDen
 } = require("../model/itemList");
 
 function puppyFound(){
@@ -33,8 +34,8 @@ function puppyFound(){
 let puppyLocation;
 
 
-const puppyLocationRooms = ["Office", "BookshelfRoom", "Attic", "SoundStudio, Kitchen, WineRoom, Deck, DiningRoom, Den"];
-//," Hallway, Then upstairs bedrooms" - These are the next rooms to add once they are in the game.  Not adding SecretRoomattic.
+const puppyLocationRooms = ["Office", "BookshelfRoom", "Attic", "SoundStudio, Kitchen, WineRoom, DiningRoom, Den"];
+//,"Deck, Cellar, Hallway, Then upstairs bedrooms" - These are the next rooms to add once they are in the game.  Not adding SecretRoomattic.
 function puppyLocationRandom() {
   puppyLocation =
     puppyLocationRooms[Math.floor(Math.random() * puppyLocationRooms.length)];
@@ -75,6 +76,8 @@ function startInstructions() {
   clearItemListKitchen();
   clearItemListDeck();
   clearItemListWineRoom();
+  clearItemListDiningRoom();
+  clearItemListDen();
   let message = "";
   message += "                 \n";
   message += "Instructions.  \n";

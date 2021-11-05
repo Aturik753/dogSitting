@@ -41,8 +41,18 @@ function foyerLookNorth() {
     addRoom ("Hallway")
     return message;
   }
+  function foyerNorthEnterHallway() {
+    let message = "You open the door and see the upstairs hallway.\n";
+    message += "The entire area is full of construction materials.\n";
+    message += "There is no way you can proceed.  Go back to the Foyer.";
+    return message;
+  }
 
-  //Why is my message gray in this function rather than blue like every other one.
+  //The enter hallway function above should be replaced eventually once I have time to build the second story to the house.
+  //watch for this message when building again.
+
+
+
   function foyerNorthStaircaseUseKey835() {
     let message = "You try the key but the door remains locked.";
     return message;
@@ -105,9 +115,23 @@ function foyerLookNorth() {
   }
   
   function foyerLookWest() {
-    let message = "You look West in the Foyer and see a blank wall";
+    let message = "You look West in the Foyer and see an archway\n";
+    message += "Item list = Archway";
+    addItemFoyer("Archway");
     return message;
   }
+  function foyerSearchArchway() {
+    let message = "The beautiful archway is a grand entrance leading into the den.\n";
+    message += "You found a new room = Den";
+    addRoom("Den");
+    return message;
+  }
+  function foyerEnterDen() {
+    let message = "You step from the foyer through the grand archway into the den.\n";
+    message += "Go to http://localhost:3000/Den";
+    return message;
+  } 
+
   
  
   
@@ -117,6 +141,7 @@ function foyerLookNorth() {
     foyerNorthSearchLockedDoor,
     foyerNorthSearchKeyhole,
     foyerNorthStaircaseUseKey64,
+    foyerNorthEnterHallway,
     foyerNorthStaircaseUseKey835,
     foyerNorthStaircaseUseKey,
     foyerNorthSearchDoor,
@@ -128,5 +153,7 @@ function foyerLookNorth() {
     foyerEastEnterLibrary,
     foyerLookSouth,
     foyerSouthSearchFrontdoor,
-    foyerLookWest
+    foyerLookWest,
+    foyerSearchArchway,
+    foyerEnterDen
   };

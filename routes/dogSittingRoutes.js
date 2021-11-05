@@ -14,7 +14,8 @@ let {getRoomList,
     getItemListKitchen,
     getItemListDeck,
     getItemListWineRoom,
-    getItemListDiningRoom} = require("../model/itemList");
+    getItemListDiningRoom,
+    getItemListDen} = require("../model/itemList");
 let {newGame,
     instructions, 
     startInstructions,
@@ -24,6 +25,7 @@ let {foyerLookNorth,
     foyerNorthSearchLockedDoor,
     foyerNorthSearchKeyhole,
     foyerNorthStaircaseUseKey64,
+    foyerNorthEnterHallway,
     foyerNorthStaircaseUseKey835,
     foyerNorthStaircaseUseKey,
     foyerNorthSearchDoor,
@@ -35,7 +37,9 @@ let {foyerLookNorth,
     foyerEastEnterLibrary,
     foyerLookSouth,
     foyerSouthSearchFrontdoor,
-    foyerLookWest} = require("../model/foyer");
+    foyerLookWest,
+    foyerSearchArchway,
+    foyerEnterDen} = require("../model/foyer");
 let {libraryEnter,
   libraryLookNorth,
   libraryNorthSearchBookshelves,
@@ -165,7 +169,23 @@ let {
   diningRoomSearchFrenchDoors,
   diningRoomEnterDen,
   diningRoomLookWest} = require("../model/diningRoom");
-
+let {denEnter,
+  denSearchBearRug,
+  denSearchClaws,
+  denSearchTeeth,
+  denSearchLatch,
+  denUseLatch,
+  denSearchTrapDoor,
+  denEnterCellar,
+  denLookNorth,
+  denSearchFrenchDoors,
+  denEnterDiningRoom,
+  denLookEast,
+  denSearchArchway,
+  denEnterFoyer,
+  denLookSouth,
+  denLookWest,
+  CellarEnter} = require("../model/den")
 
 
 
@@ -218,6 +238,10 @@ router.get("/WineRoom/itemList" , (req,res) => {
 });
 router.get("/DiningRoom/itemList" , (req,res) => {
   let message = getItemListDiningRoom()
+  res.send(message)
+});
+router.get("/Den/itemList" , (req,res) => {
+  let message = getItemListDen()
   res.send(message)
 });
 
@@ -275,6 +299,10 @@ router.get("/Foyer/useKey64", (req, res) => {
   let message = foyerNorthStaircaseUseKey64();
   res.send(message);
 });
+router.get("/Foyer/enterHallway", (req, res) => {
+  let message = foyerNorthEnterHallway();
+  res.send(message);
+});
 router.get("/Foyer/useKey", (req, res) => {
   let message = foyerNorthStaircaseUseKey();
   res.send(message);
@@ -329,6 +357,14 @@ router.get("/Foyer/searchFrontdoor", (req, res) => {
 });
 router.get("/Foyer/lookWest", (req, res) => {
   let message = foyerLookWest();
+  res.send(message);
+});
+router.get("/Foyer/searchArchway", (req, res) => {
+  let message = foyerSearchArchway();
+  res.send(message);
+});
+router.get("/Foyer/enterDen", (req, res) => {
+  let message = foyerEnterDen();
   res.send(message);
 });
 router.get("/Foyer/enterLibrary", (req, res) => {
@@ -847,6 +883,74 @@ router.get("/DiningRoom/enterDen", (req, res) => {
 })
 router.get("/DiningRoom/lookWest", (req, res) => {
   let message = diningRoomLookWest();
+  res.send(message);
+})
+router.get("/Den", (req, res) => {
+  let message = denEnter();
+  res.send(message);
+})
+router.get("/Den/searchBearRug", (req, res) => {
+  let message = denSearchBearRug();
+  res.send(message);
+})
+router.get("/Den/searchClaws", (req, res) => {
+  let message = denSearchClaws();
+  res.send(message);
+})
+router.get("/Den/searchTeeth", (req, res) => {
+  let message = denSearchTeeth();
+  res.send(message);
+})
+router.get("/Den/searchLatch", (req, res) => {
+  let message = denSearchLatch();
+  res.send(message);
+})
+router.get("/Den/useLatch", (req, res) => {
+  let message = denUseLatch();
+  res.send(message);
+})
+router.get("/Den/searchTrapDoor", (req, res) => {
+  let message = denSearchTrapDoor();
+  res.send(message);
+})
+router.get("/Den/enterCellar", (req, res) => {
+  let message = denEnterCellar();
+  res.send(message);
+})
+router.get("/Den/lookNorth", (req, res) => {
+  let message = denLookNorth();
+  res.send(message);
+})
+router.get("/Den/searchFrenchDoors", (req, res) => {
+  let message = denSearchFrenchDoors();
+  res.send(message);
+})
+router.get("/Den/enterDiningRoom", (req, res) => {
+  let message = denEnterDiningRoom();
+  res.send(message);
+})
+router.get("/Den/lookEast", (req, res) => {
+  let message = denLookEast();
+  res.send(message);
+})
+router.get("/Den/searchArchway", (req, res) => {
+  let message = denSearchArchway();
+  res.send(message);
+})
+router.get("/Den/enterFoyer", (req, res) => {
+  let message = denEnterFoyer();
+  res.send(message);
+})
+router.get("/Den/lookSouth", (req, res) => {
+  let message = denLookSouth();
+  res.send(message);
+})
+router.get("/Den/lookWest", (req, res) => {
+  let message = denLookWest();
+  res.send(message);
+})
+router.get("/Cellar", (req, res) => {
+  let message = CellarEnter();
   res.send(message);
 })
 

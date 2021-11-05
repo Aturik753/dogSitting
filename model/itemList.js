@@ -231,6 +231,27 @@ function addItemDiningRoom(itemDiningRoom){
 }
 
 
+let itemListDen = []
+
+function clearItemListDen(){
+   itemListDen = []
+   console.log ("Clear Item list Den", itemListDen)
+}
+function getItemListDen(){
+    console.log ("Get item list Den", Den)
+    return itemListDen
+}
+function addItemDen(itemDen){
+    var existingItemDen = itemListDen.find(function(checkItemDen){
+        return checkItemDen == itemDen
+    })
+    if (existingItemDen == null){
+        itemListDen.push(itemDen)
+        }
+        console.log ("after push Item Den", itemListDen)
+}
+
+
 
 let roomList = []
 
@@ -312,4 +333,7 @@ module.exports = {
     clearItemListDiningRoom, 
     getItemListDiningRoom, 
     addItemDiningRoom,
+    clearItemListDen, 
+    getItemListDen, 
+    addItemDen
 }
